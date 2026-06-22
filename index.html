@@ -1,29 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CGPA Calculator </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart CGPA Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>CGPA Calculator </h1>
+    <div class="app-container">
 
-    <label>Student Name</label>
-    <input type="text" id="studentName">
+        <!-- Header -->
+        <header class="header">
+            <h1>🎓 Smart CGPA Calculator</h1>
+            <p>Calculate GPA and CGPA using multiple methods</p>
+        </header>
 
-    <label>Number of Semesters</label>
-    <input type="number" id="totalSemesters" min="1">
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'detailedCGPA')">
+                Detailed CGPA
+            </button>
 
-    <button onclick="generateSemesters()">Generate Semesters</button>
+            <button class="tab-btn" onclick="openTab(event, 'semesterGPA')">
+                Semester GPA
+            </button>
 
-    <div id="semesterContainer"></div>
+            <button class="tab-btn" onclick="openTab(event, 'knownCGPA')">
+                CGPA from GPAs
+            </button>
+        </div>
 
-    <button class="calc" onclick="calculateCGPA()">Calculate CGPA</button>
+        <!-- ====================================================== -->
+        <!-- TAB 1 : DETAILED CGPA CALCULATOR -->
+        <!-- ====================================================== -->
 
-    <div id="output"></div>
-</div>
+        <div id="detailedCGPA" class="tab-content active">
 
-<script src="script.js"></script>
+            <div class="card">
+                <h2>Detailed CGPA Calculator</h2>
+
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter Student Name"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Number of Semesters</label>
+                    <input
+                        type="number"
+                        id="totalSemesters"
+                        min="1"
+                        placeholder="Enter Number of Semesters"
+                    >
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="generateSemesters()"
+                >
+                    Generate Semesters
+                </button>
+
+                <div id="semesterContainer"></div>
+
+                <button
+                    class="success-btn"
+                    onclick="calculateCGPA()"
+                >
+                    Calculate Final CGPA
+                </button>
+
+                <div id="output"></div>
+
+            </div>
+
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- TAB 2 : SEMESTER GPA CALCULATOR -->
+        <!-- ====================================================== -->
+
+        <div id="semesterGPA" class="tab-content">
+
+            <div class="card">
+
+                <h2>Semester GPA Calculator</h2>
+
+                <div class="form-group">
+                    <label>Number of Courses</label>
+
+                    <input
+                        type="number"
+                        id="gpaCourseCount"
+                        min="1"
+                        placeholder="Enter Number of Courses"
+                    >
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="generateGPACourses()"
+                >
+                    Generate Courses
+                </button>
+
+                <div id="gpaCourseContainer"></div>
+
+                <button
+                    class="success-btn"
+                    onclick="calculateSemesterGPA()"
+                >
+                    Calculate GPA
+                </button>
+
+                <div id="gpaOutput"></div>
+
+            </div>
+
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- TAB 3 : CGPA FROM KNOWN GPAs -->
+        <!-- ====================================================== -->
+
+        <div id="knownCGPA" class="tab-content">
+
+            <div class="card">
+
+                <h2>CGPA from Known Semester GPAs</h2>
+
+                <div class="form-group">
+                    <label>Number of Semesters</label>
+
+                    <input
+                        type="number"
+                        id="knownSemesterCount"
+                        min="1"
+                        placeholder="Enter Number of Semesters"
+                    >
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="generateKnownSemesters()"
+                >
+                    Generate GPA Fields
+                </button>
+
+                <div id="knownSemesterContainer"></div>
+
+                <button
+                    class="success-btn"
+                    onclick="calculateKnownCGPA()"
+                >
+                    Calculate CGPA
+                </button>
+
+                <div id="knownOutput"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
