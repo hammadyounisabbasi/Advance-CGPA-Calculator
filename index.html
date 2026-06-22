@@ -13,56 +13,57 @@
 <header class="main-header">
     <div class="header-content">
         <h1>🎓 CGPA Dashboard System</h1>
-        <p>Modern Academic Performance Tracker</p>
+        <p>Modern Academic Performance Tracker  </p>
     </div>
 </header>
 
-<!-- ================= STUDENT INFO ================= -->
-<section class="student-info">
-    <div class="info-card">
-        <label>Student Name</label>
-        <input type="text" id="studentName" placeholder="Enter student name">
-    </div>
-
-    <div class="info-card">
-        <label>Roll Number</label>
-        <input type="text" id="studentRoll" placeholder="Enter roll number">
-    </div>
-</section>
-
-
-<div id="t1" class="tab-content active">
-    <input id="semCount" type="number" placeholder="Semesters">
-    <button onclick="generateSemesters()">Generate</button>
-    <div id="semBox"></div>
-    <button onclick="calcCGPA()">Calculate CGPA</button>
-    <div id="out1"></div>
+<!-- STUDENT INFO -->
+<div class="student">
+    <input id="studentName" placeholder="Student Name">
+    <input id="studentRoll" placeholder="Roll Number">
 </div>
 
-<!-- TAB 2 -->
-<div id="t2" class="tab-content">
-    <input id="courseCount" type="number" placeholder="Courses">
-    <button onclick="generateCourses()">Generate</button>
-    <div id="courseBox"></div>
-    <button onclick="calcGPA()">Calculate GPA</button>
-    <div id="out2"></div>
-</div>
+<!-- ================= TAB 1 ================= -->
+<h2>Detailed CGPA</h2>
 
-<!-- TAB 3 -->
-<div id="t3" class="tab-content">
-    <input id="gpaCount" type="number" placeholder="Semesters">
-    <button onclick="generatePast()">Generate</button>
-    <div id="pastBox"></div>
-    <button onclick="calcPastCGPA()">Calculate CGPA</button>
-    <div id="out3"></div>
-</div>
+<input type="number" id="totalSemesters" placeholder="Number of Semesters">
+<button onclick="generateSemesters()">Generate Semesters</button>
 
-<!-- ================= FOOTER ================= -->
+<div id="semesterContainer"></div>
+
+<button onclick="calculateCGPA()">Calculate CGPA</button>
+<div id="output"></div>
+
+<hr>
+
+<!-- ================= TAB 2 ================= -->
+<h2>Semester GPA</h2>
+
+<input type="number" id="gpaCourseCount" placeholder="Number of Courses">
+<button onclick="generateGPACourses()">Generate Courses</button>
+
+<div id="gpaCourseContainer"></div>
+
+<button onclick="calculateSemesterGPA()">Calculate GPA</button>
+<div id="gpaOutput"></div>
+
+<hr>
+
+<!-- ================= TAB 3 ================= -->
+<h2>CGPA from Previous GPA</h2>
+
+<input type="number" id="knownSemesterCount" placeholder="Number of Semesters">
+<button onclick="generateKnownSemesters()">Generate Table</button>
+
+<div id="knownSemesterContainer"></div>
+
+<button onclick="calculateKnownCGPA()">Calculate CGPA</button>
+<div id="knownOutput"></div>
+
 <footer class="footer">
     <p>CGPA System developed by Hammad Younis Abbasi</p>
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
