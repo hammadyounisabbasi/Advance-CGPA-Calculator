@@ -5,9 +5,7 @@ function getGradeFromMarks(m) {
     m = parseFloat(m);
 
      if (isNaN(m)) return { ng: 0, lg: "N/A" };
-
     if (m < 50) return { ng: 0.00, lg: "F" };
-
     if (m <= 51) return { ng: 1.08, lg: "D" };
     if (m <= 52) return { ng: 1.17, lg: "D" };
     if (m <= 53) return { ng: 1.25, lg: "D" };
@@ -15,41 +13,33 @@ function getGradeFromMarks(m) {
     if (m <= 55) return { ng: 1.42, lg: "D+" };
     if (m <= 56) return { ng: 1.50, lg: "D+" };
     if (m <= 57) return { ng: 1.58, lg: "D+" };
-
     if (m <= 58) return { ng: 1.67, lg: "C-" };
     if (m <= 59) return { ng: 1.75, lg: "C-" };
     if (m <= 60) return { ng: 1.83, lg: "C-" };
-
     if (m <= 61) return { ng: 1.92, lg: "C" };
     if (m <= 62) return { ng: 2.00, lg: "C" };
     if (m <= 63) return { ng: 2.08, lg: "C" };
-
     if (m <= 64) return { ng: 2.17, lg: "C+" };
     if (m <= 65) return { ng: 2.25, lg: "C+" };
     if (m <= 66) return { ng: 2.33, lg: "C+" };
     if (m <= 67) return { ng: 2.42, lg: "C+" };
-
     if (m <= 68) return { ng: 2.50, lg: "B-" };
     if (m <= 69) return { ng: 2.58, lg: "B-" };
     if (m <= 70) return { ng: 2.67, lg: "B-" };
-
     if (m <= 71) return { ng: 2.75, lg: "B" };
     if (m <= 72) return { ng: 2.83, lg: "B" };
     if (m <= 73) return { ng: 2.92, lg: "B" };
     if (m <= 74) return { ng: 3.00, lg: "B" };
-
     if (m <= 75) return { ng: 3.08, lg: "B+" };
     if (m <= 76) return { ng: 3.17, lg: "B+" };
     if (m <= 77) return { ng: 3.25, lg: "B+" };
     if (m <= 78) return { ng: 3.33, lg: "B+" };
     if (m <= 79) return { ng: 3.42, lg: "B+" };
-
     if (m <= 80) return { ng: 3.50, lg: "A-" };
     if (m <= 81) return { ng: 3.60, lg: "A-" };
     if (m <= 82) return { ng: 3.70, lg: "A-" };
     if (m <= 83) return { ng: 3.80, lg: "A-" };
     if (m <= 84) return { ng: 3.90, lg: "A-" };
-
     return { ng: 4.00, lg: "A" };
 }
 
