@@ -3,67 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CGPA Dashboard System</title>
+    <title>Advanced CGPA Calculator - University of Haripur</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="header-title">CGPA Calculator</h1>
+                <p class="header-subtitle">The University of Haripur Grading System</p>
+            </div>
+        </header>
 
-<!-- ================= HEADER ================= -->
-<header class="main-header">
-    <div class="header-content">
-        <h1>🎓 CGPA Dashboard System</h1>
-        <p>Modern Academic Performance Tracker  </p>
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="detailed-cgpa">
+                <span class="icon">📊</span>
+                <span>Detailed CGPA</span>
+            </button>
+            <button class="nav-tab" data-tab="semester-gpa">
+                <span class="icon">📈</span>
+                <span>Semester GPA</span>
+            </button>
+            <button class="nav-tab" data-tab="previous-gpa">
+                <span class="icon">🔄</span>
+                <span>From Previous GPA</span>
+            </button>
+        </nav>
+
+        <!-- Tab Contents -->
+        <main class="tab-content">
+
+            <!-- 1. Detailed CGPA Calculator -->
+            <section class="tab-pane active" id="detailed-cgpa">
+                <div class="section-header">
+                    <h2>Detailed CGPA Calculation</h2>
+                    <p>Enter your semester data to calculate your cumulative GPA</p>
+                </div>
+
+                <!-- Student Info -->
+                <div class="card student-info-card">
+                    <h3>Student Information</h3>
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="studentName">Student Name</label>
+                            <input type="text" id="studentName" placeholder="Enter your name (optional)">
+                        </div>
+                        <div class="form-group">
+                            <label for="studentRoll">Roll Number</label>
+                            <input type="text" id="studentRoll" placeholder="Enter your roll number (optional)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Semester Input -->
+                <div class="card input-card">
+                    <h3>Configure Semesters</h3>
+                    <div class="form-group">
+                        <label for="semesterCount">Number of Semesters</label>
+                        <div class="input-group">
+                            <input type="number" id="semesterCount" min="1" max="20" value="1" placeholder="Enter number of semesters">
+                            <button class="btn btn-primary" onclick="generateSemesters()">Generate Semesters</button>
+                        </div>
+                        <small>Min: 1, Max: 20</small>
+                    </div>
+                </div>
+
+                <!-- Semester Data Input -->
+                <div id="semesterInputsContainer" class="semesters-container"></div>
+
+                <!-- Calculate Button -->
+                <div class="button-group">
+                    <button class="btn btn-success btn-lg" onclick="calculateDetailedCGPA()">Calculate CGPA</button>
+                    <button class="btn btn-secondary btn-lg" onclick="resetDetailedForm()">Reset</button>
+                </div>
+
+                <!-- Output -->
+                <div id="detailedOutput" class="output-section"></div>
+            </section>
+
+            <!-- 2. Semester GPA Calculator -->
+            <section class="tab-pane" id="semester-gpa">
+                <div class="section-header">
+                    <h2>Semester GPA Calculation</h2>
+                    <p>Calculate your GPA for a single semester</p>
+                </div>
+
+                <!-- Course Input -->
+                <div class="card input-card">
+                    <h3>Configure Courses</h3>
+                    <div class="form-group">
+                        <label for="courseCount">Number of Courses</label>
+                        <div class="input-group">
+                            <input type="number" id="courseCount" min="1" max="20" value="1" placeholder="Enter number of courses">
+                            <button class="btn btn-primary" onclick="generateCourses()">Generate Courses</button>
+                        </div>
+                        <small>Min: 1, Max: 20</small>
+                    </div>
+                </div>
+
+                <!-- Course Data Input -->
+                <div id="courseInputsContainer" class="courses-container"></div>
+
+                <!-- Calculate Button -->
+                <div class="button-group">
+                    <button class="btn btn-success btn-lg" onclick="calculateSemesterGPA()">Calculate GPA</button>
+                    <button class="btn btn-secondary btn-lg" onclick="resetSemesterForm()">Reset</button>
+                </div>
+
+                <!-- Output -->
+                <div id="semesterOutput" class="output-section"></div>
+            </section>
+
+            <!-- 3. Previous GPA-Based CGPA Calculator -->
+            <section class="tab-pane" id="previous-gpa">
+                <div class="section-header">
+                    <h2>CGPA from Previous Semesters</h2>
+                    <p>Calculate your CGPA by combining previous semester GPAs</p>
+                </div>
+
+                <!-- Semester Input -->
+                <div class="card input-card">
+                    <h3>Configure Semesters</h3>
+                    <div class="form-group">
+                        <label for="prevSemesterCount">Number of Semesters</label>
+                        <div class="input-group">
+                            <input type="number" id="prevSemesterCount" min="1" max="20" value="1" placeholder="Enter number of semesters">
+                            <button class="btn btn-primary" onclick="generatePreviousSemesters()">Generate Semesters</button>
+                        </div>
+                        <small>Min: 1, Max: 20</small>
+                    </div>
+                </div>
+
+                <!-- Previous Semester Data Input -->
+                <div id="previousSemesterInputsContainer" class="previous-semesters-container"></div>
+
+                <!-- Calculate Button -->
+                <div class="button-group">
+                    <button class="btn btn-success btn-lg" onclick="calculatePreviousGPACGPA()">Calculate CGPA</button>
+                    <button class="btn btn-secondary btn-lg" onclick="resetPreviousForm()">Reset</button>
+                </div>
+
+                <!-- Output -->
+                <div id="previousGpaOutput" class="output-section"></div>
+            </section>
+
+        </main>
     </div>
-</header>
 
-<!-- STUDENT INFO -->
-<div class="student">
-    <input id="studentName" placeholder="Student Name">
-    <input id="studentRoll" placeholder="Roll Number">
-</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 The University of Haripur CGPA Calculator Made by Hammad Younis Abbasi. All rights reserved.</p>
+    </footer>
 
-<!-- ================= TAB 1 ================= -->
-<h2>Detailed CGPA</h2>
-
-<input type="number" id="totalSemesters" placeholder="Number of Semesters">
-<button onclick="generateSemesters()">Generate Semesters</button>
-
-<div id="semesterContainer"></div>
-
-<button onclick="calculateCGPA()">Calculate CGPA</button>
-<div id="output"></div>
-
-<hr>
-
-<!-- ================= TAB 2 ================= -->
-<h2>Semester GPA</h2>
-
-<input type="number" id="gpaCourseCount" placeholder="Number of Courses">
-<button onclick="generateGPACourses()">Generate Courses</button>
-
-<div id="gpaCourseContainer"></div>
-
-<button onclick="calculateSemesterGPA()">Calculate GPA</button>
-<div id="gpaOutput"></div>
-
-<hr>
-
-<!-- ================= TAB 3 ================= -->
-<h2>CGPA from Previous GPA</h2>
-
-<input type="number" id="knownSemesterCount" placeholder="Number of Semesters">
-<button onclick="generateKnownSemesters()">Generate Table</button>
-
-<div id="knownSemesterContainer"></div>
-
-<button onclick="calculateKnownCGPA()">Calculate CGPA</button>
-<div id="knownOutput"></div>
-
-<footer class="footer">
-    <p>CGPA System developed by Hammad Younis Abbasi</p>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
